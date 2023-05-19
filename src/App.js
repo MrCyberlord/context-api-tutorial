@@ -10,8 +10,11 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
+          {/* <Route path="/" element={<Home />} />
+          <Route path="/Cart" element={<Cart />} /> */}
+
           <Route path="/" element={<Home />} />
-          <Route path="/Cart" element={<Cart />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { cartContext } from "../Context";
+
 const SingleProduct = ({ prod }) => {
+  const { cart, setCart } = useContext(cartContext);
+
   return (
     <div className="products">
       <img src={prod.image} alt={prod.name} />
@@ -6,7 +11,25 @@ const SingleProduct = ({ prod }) => {
         <span style={{ fontWeight: 700 }}>{prod.name}</span>
         <span>₹ {prod.price.substring(0, 3)}</span>
       </div>
-      <button className="add">Add to Cart</button>
+      {cart.includes(prod) ? (
+        <button
+          className="add"
+          onClick={() => {
+            setCart(cart.filter((c) => c.id !== prod.id));
+          }}
+        >
+          Remove from Cart
+        </button>
+      ) : (
+        <button
+          className="add"
+          onClick={() => {
+            setCart([...cart, prod]);
+          }}
+        >
+          Add to Cart
+        </button>
+      )}
     </div>
   );
 };

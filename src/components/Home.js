@@ -3,6 +3,8 @@ import { faker } from "@faker-js/faker";
 import SingleProduct from "./SingleProduct";
 import "./styles.css";
 
+faker.seed(100);
+
 const Home = () => {
   const productsArray = [...Array(20)].map(() => ({
     id: faker.datatype.uuid(),
@@ -16,7 +18,7 @@ const Home = () => {
   return (
     <div className="productContainer">
       {products.map((prod) => (
-        <SingleProduct prod={prod} />
+        <SingleProduct prod={prod} key={prod.id} />
       ))}
     </div>
   );
